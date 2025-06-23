@@ -1,8 +1,35 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../CartContext";
 
 const Product = (props) => {
-  console.log(props);
+  
+  const {cart, setCart } = useContext(CartContext);    // ye App.js file se aa rha cart & setCart , cart ko store krne ke liye
   const { product } = props;
+
+  // addToCart click functionality
+  const addToCart = (e, product)  => {
+    e.preventDefault();
+    let _cart =  { ...cart }; // { items: {}}
+
+    if(!_cart.items){
+      _cart.items = {};  // iske andar abhi hum empty object dal rhe hai
+    }
+
+    if(_cart.items[product.id]){
+      _cart.items[product.id] += 1;  //cart ke andar items ko add kr rhe hai
+    } else{
+      _cart.items[product.id] = 1;
+    }
+
+    if(!_cart.totalItems){
+      _cart.totalItems = 0;
+    }
+
+    _cart.totalItems += 1;
+
+    setCart(_cart);
+  };
 
   return (
     <Link to={`/products/${product.id}`}>
@@ -16,7 +43,7 @@ const Product = (props) => {
         </div>
         <div className="flex justify-between items-center mt-4">
           <span>₹ {product.caloriesPerServing}</span>
-          <button className="bg-yellow-500 py-1 px-4 rounded-full font-bold">
+          <button onClick={(e) => addToCart(e, product)} className="bg-yellow-500 py-1 px-4 rounded-full font-bold cursor-pointer">
             ADD
           </button>
         </div>
