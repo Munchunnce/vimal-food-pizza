@@ -3,7 +3,7 @@ import { CartContext } from "../CartContext";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
 
   useEffect(() => {
     if (!cart.items || Object.keys(cart.items).length === 0) {
@@ -27,6 +27,26 @@ const Cart = () => {
     fetchProducts();
   }, [cart]);
 
+  const increment = (productId) => {
+    const existingQyt = cart.items[productId];
+    const _cart = { ...cart };
+    _cart.items[productId] = existingQyt + 1;
+    _cart.totalItems += 1;
+    setCart(_cart);
+  }
+
+  // decrement button
+  const decrement = (productId) => {
+    const existingQyt = cart.items[productId];
+    if(existingQyt === 1){
+      return;
+    }
+    const _cart = { ...cart };
+    _cart.items[productId] = existingQyt - 1;
+    _cart.totalItems -= 1;
+    setCart(_cart);
+  }
+
   return (
     <div className='container mx-auto lg:w-1/2 w-full pb-24'>
       <h1 className='my-12 font-bold'>Cart items</h1>
@@ -39,9 +59,9 @@ const Cart = () => {
                 <span className='font-bold ml-4 w-48'>{product.name}</span>
               </div>
               <div>
-                <button className='bg-yellow-500 px-4 py-2 rounded-full leading-none'>-</button>
+                <button onClick={() => decrement(product.id) } className='bg-yellow-500 px-4 py-2 rounded-full leading-none'>-</button>
                 <b className='px-4'>{cart.items[product.id]}</b>
-                <button className='bg-yellow-500 px-4 py-2 rounded-full leading-none'>+</button>
+                <button onClick={() => increment(product.id) } className='bg-yellow-500 px-4 py-2 rounded-full leading-none'>+</button>
               </div>
               <span>₹ {product.caloriesPerServing * cart.items[product.id]}</span>
               <button className='bg-red-500 px-4 py-2 rounded-full leading-none text-white'>Delete</button>
