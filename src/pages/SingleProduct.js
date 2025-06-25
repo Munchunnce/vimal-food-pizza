@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { CartContext } from "../CartContext";
+
 
 
 const SingleProduct = () => {
 
   const [product, setProduct] = useState({});
+  const {cart, setCart } = useContext(CartContext);
   const params = useParams();
   const navigate = useNavigate();
+  const [isAdding, setIsAdding] = useState(false);
   
   useEffect(() => {
     fetch(`https://dummyjson.com/recipes/${params.id}`)
@@ -15,6 +19,36 @@ const SingleProduct = () => {
           setProduct(product);
         })
   },[params.id]);
+
+  // addToCart click functionality
+  const addToCart = (e, product)  => {
+    e.preventDefault();
+    let _cart =  { ...cart }; // { items: {}}
+
+    if(!_cart.items){
+      _cart.items = {};  // iske andar abhi hum empty object dal rhe hai
+    }
+
+    if(_cart.items[product.id]){
+      _cart.items[product.id] += 1;  //cart ke andar items ko add kr rhe hai
+    } else{
+      _cart.items[product.id] = 1;
+    }
+
+    if(!_cart.totalItems){
+      _cart.totalItems = 0;
+    }
+
+    _cart.totalItems += 1;
+
+    setCart(_cart);
+
+    // click button color change
+    setIsAdding(true);
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 1000);
+  };
 
 
   return (
@@ -26,7 +60,10 @@ const SingleProduct = () => {
           <h1 className="text-xl font-bold">{product.name}</h1>
           <div className="text-md">{product.difficulty}</div>
           <div className="font-bold mt-2">₹ {product.caloriesPerServing}</div>
-          <button className="bg-yellow-500 py-1 px-8 rounded-full font-bold mt-4">Add to cart</button>
+          {/* <button className="bg-yellow-500 py-1 px-8 rounded-full font-bold mt-4">Add to cart</button> */}
+          <button disabled={isAdding} onClick={(e) => addToCart(e, product)} className={`${ isAdding ? 'bg-green-500' : 'bg-yellow-500' } py-1 px-8 rounded-full font-bold mt-4 cursor-pointer`}>
+            {isAdding ? 'ADDED' : 'Add to cart'}
+          </button>
         </div>
       </div>
     </div>
