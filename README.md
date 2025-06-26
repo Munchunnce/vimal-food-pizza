@@ -16,6 +16,9 @@
 ## 📸 Preview
 
 ![Pizza App Preview](./public/images/pizzahome.png)
+![Pizza App Preview](./public/images/pizza-products.png)
+![Pizza App Preview](./public/images/cart-items.png)
+![Pizza App Preview](./public/images/empty-cart.png)
 
 ---
 
