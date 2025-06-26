@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../CartContext";
+import Toast from "../components/Toast/Toast";
 
 
 
@@ -11,6 +12,7 @@ const SingleProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [isAdding, setIsAdding] = useState(false);
+  const [toast, setToast] = useState(null); //  Toast info
   
   useEffect(() => {
     fetch(`https://dummyjson.com/recipes/${params.id}`)
@@ -42,6 +44,8 @@ const SingleProduct = () => {
     _cart.totalItems += 1;
 
     setCart(_cart);
+    // Show toast with product name
+    setToast({ message: `🛒 added to cart!`, type: 'success' });
 
     // click button color change
     setIsAdding(true);
@@ -52,6 +56,16 @@ const SingleProduct = () => {
 
 
   return (
+    <>
+      {toast && (
+            <Toast
+              message={toast.message}
+              type={toast.type}
+              onClose={() => setToast(null)}
+              />
+            )
+          }
+    
     <div className="container mx-auto mt-12">
       <button className="mb-12 font-bold cursor-pointer" onClick={() => navigate('/')}>Back</button>
       <div className="flex">
@@ -67,6 +81,7 @@ const SingleProduct = () => {
         </div>
       </div>
     </div>
+   </>  
   )
 }
 
