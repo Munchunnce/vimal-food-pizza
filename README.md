@@ -19,7 +19,7 @@
 
 ## 📸 Preview
 
-![Pizza App Preview](./public/images/pizzahome.png.png)
+![Pizza App Preview](./public/images/pizzahome.png)
 
 ---
 
