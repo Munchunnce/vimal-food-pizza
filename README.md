@@ -1,8 +1,4 @@
 
-
----
-
-```md
 # 🍕 Vimal Food Pizza - React Shopping Cart App
 
 <p align="center">
@@ -15,7 +11,7 @@
 
 🔗 [Live Demo](https://vimal-food-pizza.vercel.app/) • [Source Code](https://github.com/Munchunnce/vimal-food-pizza)
 
----
+
 
 ## 📸 Preview
 
