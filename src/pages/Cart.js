@@ -43,6 +43,7 @@ const Cart = () => {
     setCart(_cart);
   }
 
+  
   // decrement button
   const decrement = (productId) => {
     const existingQyt = cart.items[productId];
