@@ -26,6 +26,7 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  
   return (
     <div className="App">
       <BrowserRouter>
