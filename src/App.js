@@ -19,6 +19,7 @@ function App() {
       return { items: {}, totalItems: 0 };
     }
   });
+  
 
   //  Save to localStorage whenever cart changes
   useEffect(() => {
