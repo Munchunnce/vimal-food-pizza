@@ -1,6 +1,5 @@
 // import Products from '../components/Products';
 // https://dummyjson.com/recipes
-
 import Products from "../components/Products";
 
 const Home = () => {
