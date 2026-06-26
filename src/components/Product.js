@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import Toast from "./Toast/Toast";
 
+
 const Product = (props) => {
   
   const {cart, setCart } = useContext(CartContext);    // ye App.js file se aa rha cart & setCart , cart ko store krne ke liye
