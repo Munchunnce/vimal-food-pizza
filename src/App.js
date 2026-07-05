@@ -8,7 +8,6 @@ import Cart from './pages/Cart';
 import SingleProduct from './pages/SingleProduct';
 import { useEffect, useState } from 'react';
 
-
 function App() {
   //  Load from localStorage on first render
   const [cart, setCart] = useState(() => {
