@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../CartContext";
 import Toast from "../components/Toast/Toast";
-
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [priceFetched, setTogglePriceFetched] = useState(false);
