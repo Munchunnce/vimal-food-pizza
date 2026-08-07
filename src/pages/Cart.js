@@ -7,6 +7,7 @@ const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
   const [toast, setToast] = useState(null); //  Toast info
 
+
   
   useEffect(() => {
     if (!cart.items || Object.keys(cart.items).length === 0) {
