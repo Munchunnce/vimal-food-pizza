@@ -1,5 +1,6 @@
 import Products from "../components/Products";
 
+
 const ProductsPage = () => {
   return (
     <div>
