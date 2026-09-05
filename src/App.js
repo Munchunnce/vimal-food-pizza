@@ -20,7 +20,6 @@ function App() {
   });
 
   
-
   //  Save to localStorage whenever cart changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
