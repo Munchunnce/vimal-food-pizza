@@ -54,7 +54,6 @@ const SingleProduct = () => {
     }, 1000);
   };
 
-
   return (
     <>
       {toast && (
