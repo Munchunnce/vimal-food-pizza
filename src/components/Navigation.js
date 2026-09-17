@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../CartContext'
 
-
 const Navigation = () => {
   const { cart } = useContext(CartContext);
 
