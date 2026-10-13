@@ -4,7 +4,6 @@ import { CartContext } from "../CartContext";
 import Toast from "../components/Toast/Toast";
 
 
-
 const SingleProduct = () => {
 
   const [product, setProduct] = useState({});
